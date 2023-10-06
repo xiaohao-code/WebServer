@@ -16,55 +16,61 @@
 #include "threadpool.h"
 #include "sqlconnRAII.h"
 #include "httpconnect.h"
+#include "serverconfig.h"
 
 class WebServer {
 public:
+
+    WebServer(const ServerConfig &config);
+
     WebServer(
-        int port, int trigMode, int timeoutMS, bool optLinger, //端口号，触发模式，超时时间，是否优雅退出
-        int sqlPort, const char* sqlUser, const  char* sqlPwd, //mysql端口号、用户名、用户密码
-        const char* dbName, int connPoolNum, int threadNum,    //数据库名，连接池数量，线程池数量
-        bool openLog, int logLevel, int logQueSize);           //是否开启日志，日志等级，日志异步队列容量
+        int port, int trig_mode, int timeout_ms, bool opt_linger,   //端口号，触发模式，超时时间，是否优雅退出
+        int sql_port, const char* sql_user, const char* sql_pwd,    //mysql端口号、用户名、用户密码
+        const char* db_name, int connect_pool_num, int thread_num,  //数据库名，数据库连接池数量，线程池数量
+        bool open_log, int log_level, int log_que_size);            //是否开启日志，日志等级，日志异步队列容量
 
     ~WebServer();
-    void Start();
+    void start_server();
 
 private:
-    bool InitSocket_(); 
-    void InitEventMode_(int trigMode);
+    bool init_socket(); 
 
-    void DealListen_();
-    void AddClient_(int fd, sockaddr_in addr);
+    void init_event_mode(int trig_mode);
 
-    void SendError_(int fd, const char*info);
-    void CloseConn_(HttpConnect* client);
+    void deal_listen();
 
-    void DealRead_(HttpConnect* client);
-    void OnRead_(HttpConnect* client);
+    void add_client(int fd, sockaddr_in addr);
 
-    void DealWrite_(HttpConnect* client);
-    void OnWrite_(HttpConnect* client);
+    void send_error(int fd, const char*info);
 
-    void OnProcess_(HttpConnect* client);
+    void close_connect(HttpConnect* client);
+
+    void deal_read(HttpConnect* client);
+
+    void on_read(HttpConnect* client);
+
+    void deal_write(HttpConnect* client);
+
+    void on_write(HttpConnect* client);
+
+    void on_process(HttpConnect* client);
     
-    
-    void ExtentTime_(HttpConnect* client);
-    static int SetFdNonblock_(int fd); //设置非阻塞
+    void extent_time(HttpConnect* client);
 
-    static const int MAX_FD = 65536;  //最大连接数
+    static int set_fd_nonblock(int fd);
 
-    int port_;        //端口号
-    bool openLinger_; //是否优雅退出
-    int timeoutMS_;   //超时时间（毫秒）
-    bool isClose_;    //是否关闭
-    int listenFd_;    //监听socket连接的文件描述符
-    char* srcDir_;    //网页文件目录
-    
-    uint32_t listenEvent_;  //监听的事件
-    uint32_t connEvent_;    //连接的事件
-   
-    std::unique_ptr<HeapTimer> timer_;         //定时器
-    std::unique_ptr<ThreadPool> threadpool_;   //线程池
-    std::unique_ptr<Epoller> epoller_;         //epoll封装
-    std::unordered_map<int, HttpConnect> users_;  //映射到客户连接
+    static const int MAX_FD = 65536; 
+    int port_;        
+    bool open_linger_; 
+    int timeout_ms_;   
+    bool is_close_;    
+    int listen_fd_;    
+    char* src_dir_;    
+    uint32_t listen_event_;  
+    uint32_t connect_event_;    
+    std::unique_ptr<HeapTimer> timer_;            
+    std::unique_ptr<ThreadPool> threadpool_;      
+    std::unique_ptr<Epoller> epoller_;            
+    std::unordered_map<int, HttpConnect> users_;  
 };
 

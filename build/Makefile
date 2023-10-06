@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/MyWebServer
+CMAKE_SOURCE_DIR = /home/ubuntu/WebServer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/MyWebServer/build
+CMAKE_BINARY_DIR = /home/ubuntu/WebServer/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/MyWebServer/build/CMakeFiles /home/ubuntu/MyWebServer/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/WebServer/build/CMakeFiles /home/ubuntu/WebServer/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/MyWebServer/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/WebServer/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,287 +111,314 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named MyWebServer
+# Target rules for targets named WebServer
 
 # Build rule for target.
-MyWebServer: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 MyWebServer
-.PHONY : MyWebServer
+WebServer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 WebServer
+.PHONY : WebServer
 
 # fast build rule for target.
-MyWebServer/fast:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/build
-.PHONY : MyWebServer/fast
+WebServer/fast:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/build
+.PHONY : WebServer/fast
 
-src/buffer.o: src/buffer.cpp.o
+webserver/buffer.o: webserver/buffer.cpp.o
 
-.PHONY : src/buffer.o
-
-# target to build an object file
-src/buffer.cpp.o:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/buffer.cpp.o
-.PHONY : src/buffer.cpp.o
-
-src/buffer.i: src/buffer.cpp.i
-
-.PHONY : src/buffer.i
-
-# target to preprocess a source file
-src/buffer.cpp.i:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/buffer.cpp.i
-.PHONY : src/buffer.cpp.i
-
-src/buffer.s: src/buffer.cpp.s
-
-.PHONY : src/buffer.s
-
-# target to generate assembly for a file
-src/buffer.cpp.s:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/buffer.cpp.s
-.PHONY : src/buffer.cpp.s
-
-src/epoller.o: src/epoller.cpp.o
-
-.PHONY : src/epoller.o
+.PHONY : webserver/buffer.o
 
 # target to build an object file
-src/epoller.cpp.o:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/epoller.cpp.o
-.PHONY : src/epoller.cpp.o
+webserver/buffer.cpp.o:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/buffer.cpp.o
+.PHONY : webserver/buffer.cpp.o
 
-src/epoller.i: src/epoller.cpp.i
+webserver/buffer.i: webserver/buffer.cpp.i
 
-.PHONY : src/epoller.i
+.PHONY : webserver/buffer.i
 
 # target to preprocess a source file
-src/epoller.cpp.i:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/epoller.cpp.i
-.PHONY : src/epoller.cpp.i
+webserver/buffer.cpp.i:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/buffer.cpp.i
+.PHONY : webserver/buffer.cpp.i
 
-src/epoller.s: src/epoller.cpp.s
+webserver/buffer.s: webserver/buffer.cpp.s
 
-.PHONY : src/epoller.s
+.PHONY : webserver/buffer.s
 
 # target to generate assembly for a file
-src/epoller.cpp.s:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/epoller.cpp.s
-.PHONY : src/epoller.cpp.s
+webserver/buffer.cpp.s:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/buffer.cpp.s
+.PHONY : webserver/buffer.cpp.s
 
-src/heaptimer.o: src/heaptimer.cpp.o
+webserver/epoller.o: webserver/epoller.cpp.o
 
-.PHONY : src/heaptimer.o
+.PHONY : webserver/epoller.o
 
 # target to build an object file
-src/heaptimer.cpp.o:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/heaptimer.cpp.o
-.PHONY : src/heaptimer.cpp.o
+webserver/epoller.cpp.o:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/epoller.cpp.o
+.PHONY : webserver/epoller.cpp.o
 
-src/heaptimer.i: src/heaptimer.cpp.i
+webserver/epoller.i: webserver/epoller.cpp.i
 
-.PHONY : src/heaptimer.i
+.PHONY : webserver/epoller.i
 
 # target to preprocess a source file
-src/heaptimer.cpp.i:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/heaptimer.cpp.i
-.PHONY : src/heaptimer.cpp.i
+webserver/epoller.cpp.i:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/epoller.cpp.i
+.PHONY : webserver/epoller.cpp.i
 
-src/heaptimer.s: src/heaptimer.cpp.s
+webserver/epoller.s: webserver/epoller.cpp.s
 
-.PHONY : src/heaptimer.s
+.PHONY : webserver/epoller.s
 
 # target to generate assembly for a file
-src/heaptimer.cpp.s:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/heaptimer.cpp.s
-.PHONY : src/heaptimer.cpp.s
+webserver/epoller.cpp.s:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/epoller.cpp.s
+.PHONY : webserver/epoller.cpp.s
 
-src/httpconnect.o: src/httpconnect.cpp.o
+webserver/heaptimer.o: webserver/heaptimer.cpp.o
 
-.PHONY : src/httpconnect.o
+.PHONY : webserver/heaptimer.o
 
 # target to build an object file
-src/httpconnect.cpp.o:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/httpconnect.cpp.o
-.PHONY : src/httpconnect.cpp.o
+webserver/heaptimer.cpp.o:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/heaptimer.cpp.o
+.PHONY : webserver/heaptimer.cpp.o
 
-src/httpconnect.i: src/httpconnect.cpp.i
+webserver/heaptimer.i: webserver/heaptimer.cpp.i
 
-.PHONY : src/httpconnect.i
+.PHONY : webserver/heaptimer.i
 
 # target to preprocess a source file
-src/httpconnect.cpp.i:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/httpconnect.cpp.i
-.PHONY : src/httpconnect.cpp.i
+webserver/heaptimer.cpp.i:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/heaptimer.cpp.i
+.PHONY : webserver/heaptimer.cpp.i
 
-src/httpconnect.s: src/httpconnect.cpp.s
+webserver/heaptimer.s: webserver/heaptimer.cpp.s
 
-.PHONY : src/httpconnect.s
+.PHONY : webserver/heaptimer.s
 
 # target to generate assembly for a file
-src/httpconnect.cpp.s:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/httpconnect.cpp.s
-.PHONY : src/httpconnect.cpp.s
+webserver/heaptimer.cpp.s:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/heaptimer.cpp.s
+.PHONY : webserver/heaptimer.cpp.s
 
-src/httprequest.o: src/httprequest.cpp.o
+webserver/httpconnect.o: webserver/httpconnect.cpp.o
 
-.PHONY : src/httprequest.o
+.PHONY : webserver/httpconnect.o
 
 # target to build an object file
-src/httprequest.cpp.o:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/httprequest.cpp.o
-.PHONY : src/httprequest.cpp.o
+webserver/httpconnect.cpp.o:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/httpconnect.cpp.o
+.PHONY : webserver/httpconnect.cpp.o
 
-src/httprequest.i: src/httprequest.cpp.i
+webserver/httpconnect.i: webserver/httpconnect.cpp.i
 
-.PHONY : src/httprequest.i
+.PHONY : webserver/httpconnect.i
 
 # target to preprocess a source file
-src/httprequest.cpp.i:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/httprequest.cpp.i
-.PHONY : src/httprequest.cpp.i
+webserver/httpconnect.cpp.i:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/httpconnect.cpp.i
+.PHONY : webserver/httpconnect.cpp.i
 
-src/httprequest.s: src/httprequest.cpp.s
+webserver/httpconnect.s: webserver/httpconnect.cpp.s
 
-.PHONY : src/httprequest.s
+.PHONY : webserver/httpconnect.s
 
 # target to generate assembly for a file
-src/httprequest.cpp.s:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/httprequest.cpp.s
-.PHONY : src/httprequest.cpp.s
+webserver/httpconnect.cpp.s:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/httpconnect.cpp.s
+.PHONY : webserver/httpconnect.cpp.s
 
-src/httpresponse.o: src/httpresponse.cpp.o
+webserver/httprequest.o: webserver/httprequest.cpp.o
 
-.PHONY : src/httpresponse.o
+.PHONY : webserver/httprequest.o
 
 # target to build an object file
-src/httpresponse.cpp.o:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/httpresponse.cpp.o
-.PHONY : src/httpresponse.cpp.o
+webserver/httprequest.cpp.o:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/httprequest.cpp.o
+.PHONY : webserver/httprequest.cpp.o
 
-src/httpresponse.i: src/httpresponse.cpp.i
+webserver/httprequest.i: webserver/httprequest.cpp.i
 
-.PHONY : src/httpresponse.i
+.PHONY : webserver/httprequest.i
 
 # target to preprocess a source file
-src/httpresponse.cpp.i:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/httpresponse.cpp.i
-.PHONY : src/httpresponse.cpp.i
+webserver/httprequest.cpp.i:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/httprequest.cpp.i
+.PHONY : webserver/httprequest.cpp.i
 
-src/httpresponse.s: src/httpresponse.cpp.s
+webserver/httprequest.s: webserver/httprequest.cpp.s
 
-.PHONY : src/httpresponse.s
+.PHONY : webserver/httprequest.s
 
 # target to generate assembly for a file
-src/httpresponse.cpp.s:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/httpresponse.cpp.s
-.PHONY : src/httpresponse.cpp.s
+webserver/httprequest.cpp.s:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/httprequest.cpp.s
+.PHONY : webserver/httprequest.cpp.s
 
-src/log.o: src/log.cpp.o
+webserver/httpresponse.o: webserver/httpresponse.cpp.o
 
-.PHONY : src/log.o
+.PHONY : webserver/httpresponse.o
 
 # target to build an object file
-src/log.cpp.o:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/log.cpp.o
-.PHONY : src/log.cpp.o
+webserver/httpresponse.cpp.o:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/httpresponse.cpp.o
+.PHONY : webserver/httpresponse.cpp.o
 
-src/log.i: src/log.cpp.i
+webserver/httpresponse.i: webserver/httpresponse.cpp.i
 
-.PHONY : src/log.i
+.PHONY : webserver/httpresponse.i
 
 # target to preprocess a source file
-src/log.cpp.i:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/log.cpp.i
-.PHONY : src/log.cpp.i
+webserver/httpresponse.cpp.i:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/httpresponse.cpp.i
+.PHONY : webserver/httpresponse.cpp.i
 
-src/log.s: src/log.cpp.s
+webserver/httpresponse.s: webserver/httpresponse.cpp.s
 
-.PHONY : src/log.s
+.PHONY : webserver/httpresponse.s
 
 # target to generate assembly for a file
-src/log.cpp.s:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/log.cpp.s
-.PHONY : src/log.cpp.s
+webserver/httpresponse.cpp.s:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/httpresponse.cpp.s
+.PHONY : webserver/httpresponse.cpp.s
 
-src/main.o: src/main.cpp.o
+webserver/log.o: webserver/log.cpp.o
 
-.PHONY : src/main.o
+.PHONY : webserver/log.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+webserver/log.cpp.o:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/log.cpp.o
+.PHONY : webserver/log.cpp.o
 
-src/main.i: src/main.cpp.i
+webserver/log.i: webserver/log.cpp.i
 
-.PHONY : src/main.i
+.PHONY : webserver/log.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+webserver/log.cpp.i:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/log.cpp.i
+.PHONY : webserver/log.cpp.i
 
-src/main.s: src/main.cpp.s
+webserver/log.s: webserver/log.cpp.s
 
-.PHONY : src/main.s
+.PHONY : webserver/log.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+webserver/log.cpp.s:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/log.cpp.s
+.PHONY : webserver/log.cpp.s
 
-src/sqlconnpool.o: src/sqlconnpool.cpp.o
+webserver/main.o: webserver/main.cpp.o
 
-.PHONY : src/sqlconnpool.o
+.PHONY : webserver/main.o
 
 # target to build an object file
-src/sqlconnpool.cpp.o:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/sqlconnpool.cpp.o
-.PHONY : src/sqlconnpool.cpp.o
+webserver/main.cpp.o:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/main.cpp.o
+.PHONY : webserver/main.cpp.o
 
-src/sqlconnpool.i: src/sqlconnpool.cpp.i
+webserver/main.i: webserver/main.cpp.i
 
-.PHONY : src/sqlconnpool.i
+.PHONY : webserver/main.i
 
 # target to preprocess a source file
-src/sqlconnpool.cpp.i:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/sqlconnpool.cpp.i
-.PHONY : src/sqlconnpool.cpp.i
+webserver/main.cpp.i:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/main.cpp.i
+.PHONY : webserver/main.cpp.i
 
-src/sqlconnpool.s: src/sqlconnpool.cpp.s
+webserver/main.s: webserver/main.cpp.s
 
-.PHONY : src/sqlconnpool.s
+.PHONY : webserver/main.s
 
 # target to generate assembly for a file
-src/sqlconnpool.cpp.s:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/sqlconnpool.cpp.s
-.PHONY : src/sqlconnpool.cpp.s
+webserver/main.cpp.s:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/main.cpp.s
+.PHONY : webserver/main.cpp.s
 
-src/webserver.o: src/webserver.cpp.o
+webserver/serverconfig.o: webserver/serverconfig.cpp.o
 
-.PHONY : src/webserver.o
+.PHONY : webserver/serverconfig.o
 
 # target to build an object file
-src/webserver.cpp.o:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/webserver.cpp.o
-.PHONY : src/webserver.cpp.o
+webserver/serverconfig.cpp.o:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/serverconfig.cpp.o
+.PHONY : webserver/serverconfig.cpp.o
 
-src/webserver.i: src/webserver.cpp.i
+webserver/serverconfig.i: webserver/serverconfig.cpp.i
 
-.PHONY : src/webserver.i
+.PHONY : webserver/serverconfig.i
 
 # target to preprocess a source file
-src/webserver.cpp.i:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/webserver.cpp.i
-.PHONY : src/webserver.cpp.i
+webserver/serverconfig.cpp.i:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/serverconfig.cpp.i
+.PHONY : webserver/serverconfig.cpp.i
 
-src/webserver.s: src/webserver.cpp.s
+webserver/serverconfig.s: webserver/serverconfig.cpp.s
 
-.PHONY : src/webserver.s
+.PHONY : webserver/serverconfig.s
 
 # target to generate assembly for a file
-src/webserver.cpp.s:
-	$(MAKE) -f CMakeFiles/MyWebServer.dir/build.make CMakeFiles/MyWebServer.dir/src/webserver.cpp.s
-.PHONY : src/webserver.cpp.s
+webserver/serverconfig.cpp.s:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/serverconfig.cpp.s
+.PHONY : webserver/serverconfig.cpp.s
+
+webserver/sqlconnpool.o: webserver/sqlconnpool.cpp.o
+
+.PHONY : webserver/sqlconnpool.o
+
+# target to build an object file
+webserver/sqlconnpool.cpp.o:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/sqlconnpool.cpp.o
+.PHONY : webserver/sqlconnpool.cpp.o
+
+webserver/sqlconnpool.i: webserver/sqlconnpool.cpp.i
+
+.PHONY : webserver/sqlconnpool.i
+
+# target to preprocess a source file
+webserver/sqlconnpool.cpp.i:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/sqlconnpool.cpp.i
+.PHONY : webserver/sqlconnpool.cpp.i
+
+webserver/sqlconnpool.s: webserver/sqlconnpool.cpp.s
+
+.PHONY : webserver/sqlconnpool.s
+
+# target to generate assembly for a file
+webserver/sqlconnpool.cpp.s:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/sqlconnpool.cpp.s
+.PHONY : webserver/sqlconnpool.cpp.s
+
+webserver/webserver.o: webserver/webserver.cpp.o
+
+.PHONY : webserver/webserver.o
+
+# target to build an object file
+webserver/webserver.cpp.o:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/webserver.cpp.o
+.PHONY : webserver/webserver.cpp.o
+
+webserver/webserver.i: webserver/webserver.cpp.i
+
+.PHONY : webserver/webserver.i
+
+# target to preprocess a source file
+webserver/webserver.cpp.i:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/webserver.cpp.i
+.PHONY : webserver/webserver.cpp.i
+
+webserver/webserver.s: webserver/webserver.cpp.s
+
+.PHONY : webserver/webserver.s
+
+# target to generate assembly for a file
+webserver/webserver.cpp.s:
+	$(MAKE) -f CMakeFiles/WebServer.dir/build.make CMakeFiles/WebServer.dir/webserver/webserver.cpp.s
+.PHONY : webserver/webserver.cpp.s
 
 # Help Target
 help:
@@ -401,37 +428,40 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... MyWebServer"
-	@echo "... src/buffer.o"
-	@echo "... src/buffer.i"
-	@echo "... src/buffer.s"
-	@echo "... src/epoller.o"
-	@echo "... src/epoller.i"
-	@echo "... src/epoller.s"
-	@echo "... src/heaptimer.o"
-	@echo "... src/heaptimer.i"
-	@echo "... src/heaptimer.s"
-	@echo "... src/httpconnect.o"
-	@echo "... src/httpconnect.i"
-	@echo "... src/httpconnect.s"
-	@echo "... src/httprequest.o"
-	@echo "... src/httprequest.i"
-	@echo "... src/httprequest.s"
-	@echo "... src/httpresponse.o"
-	@echo "... src/httpresponse.i"
-	@echo "... src/httpresponse.s"
-	@echo "... src/log.o"
-	@echo "... src/log.i"
-	@echo "... src/log.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... src/sqlconnpool.o"
-	@echo "... src/sqlconnpool.i"
-	@echo "... src/sqlconnpool.s"
-	@echo "... src/webserver.o"
-	@echo "... src/webserver.i"
-	@echo "... src/webserver.s"
+	@echo "... WebServer"
+	@echo "... webserver/buffer.o"
+	@echo "... webserver/buffer.i"
+	@echo "... webserver/buffer.s"
+	@echo "... webserver/epoller.o"
+	@echo "... webserver/epoller.i"
+	@echo "... webserver/epoller.s"
+	@echo "... webserver/heaptimer.o"
+	@echo "... webserver/heaptimer.i"
+	@echo "... webserver/heaptimer.s"
+	@echo "... webserver/httpconnect.o"
+	@echo "... webserver/httpconnect.i"
+	@echo "... webserver/httpconnect.s"
+	@echo "... webserver/httprequest.o"
+	@echo "... webserver/httprequest.i"
+	@echo "... webserver/httprequest.s"
+	@echo "... webserver/httpresponse.o"
+	@echo "... webserver/httpresponse.i"
+	@echo "... webserver/httpresponse.s"
+	@echo "... webserver/log.o"
+	@echo "... webserver/log.i"
+	@echo "... webserver/log.s"
+	@echo "... webserver/main.o"
+	@echo "... webserver/main.i"
+	@echo "... webserver/main.s"
+	@echo "... webserver/serverconfig.o"
+	@echo "... webserver/serverconfig.i"
+	@echo "... webserver/serverconfig.s"
+	@echo "... webserver/sqlconnpool.o"
+	@echo "... webserver/sqlconnpool.i"
+	@echo "... webserver/sqlconnpool.s"
+	@echo "... webserver/webserver.o"
+	@echo "... webserver/webserver.i"
+	@echo "... webserver/webserver.s"
 .PHONY : help
 
 

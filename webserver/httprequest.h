@@ -1,3 +1,5 @@
+//处理以及存储HTTP请求的内容
+
 #pragma once
 
 #include <unordered_map>
@@ -5,7 +7,7 @@
 #include <string>
 #include <regex>
 #include <errno.h>     
-#include <mysql/mysql.h>  //mysql
+#include <mysql/mysql.h>  
 
 #include "buffer.h"
 #include "log.h"
@@ -32,20 +34,19 @@ public:
         CLOSED_CONNECTION,
     };
     
-    HttpRequest() { Init(); }
+    HttpRequest() { init(); }
     ~HttpRequest() = default;
 
-    void Init();
+    void init();
     bool parse(Buffer& buff);
 
     std::string path() const;
     std::string& path();
     std::string method() const;
     std::string version() const;
-    std::string GetPost(const std::string& key) const;
-    std::string GetPost(const char* key) const;
-
-    bool IsKeepAlive() const;
+    std::string get_post(const std::string& key) const;
+    std::string get_post(const char* key) const;
+    bool is_keep_alive() const;
 
     /* 
     todo 
@@ -54,23 +55,25 @@ public:
     */
 
 private:
-    bool ParseRequestLine_(const std::string& line);
-    void ParseHeader_(const std::string& line);
-    void ParseBody_(const std::string& line);
+    static int conver_hex(char ch);
+    bool parse_request_line(const std::string& line);
+    void parse_path();
+    void parse_header(const std::string& line);
+    void parse_body(const std::string& line);
+    void parse_post();
+    void parse_from_urlencoded();
 
-    void ParsePath_();
-    void ParsePost_();
-    void ParseFromUrlencoded_();
-
-    static bool UserVerify(const std::string& name, const std::string& pwd, bool isLogin);
-
-    PARSE_STATE state_;
-    std::string method_, path_, version_, body_;
-    std::unordered_map<std::string, std::string> header_;
-    std::unordered_map<std::string, std::string> post_;
+    static bool user_verify(const std::string& name, const std::string& pwd, bool is_login);
 
     static const std::unordered_set<std::string> DEFAULT_HTML;
     static const std::unordered_map<std::string, int> DEFAULT_HTML_TAG;
-    static int ConverHex(char ch);
+
+    PARSE_STATE state_; //表明解析请求报文的位置
+    std::string method_, path_, version_, body_;
+    std::unordered_map<std::string, std::string> header_; //请求头的内容
+    std::unordered_map<std::string, std::string> post_;   //表单数据内容
+
+    
+    
 };
 

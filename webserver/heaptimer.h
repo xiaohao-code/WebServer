@@ -1,3 +1,5 @@
+//通过小根堆来实现定时器功能
+
 #pragma once
 
 #include <time.h>
@@ -7,7 +9,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <functional> 
- #include <chrono>
+#include <chrono>
 #include "log.h"
 
 typedef std::function<void()> TimeoutCallBack;
@@ -29,31 +31,31 @@ public:
     HeapTimer() { heap_.reserve(64); }
 
     ~HeapTimer() { clear(); }
+
+    void clear();
+
+    void add(int id, int timeOut, const TimeoutCallBack& cb);
     
     void adjust(int id, int newExpires);
 
-    void add(int id, int timeOut, const TimeoutCallBack& cb);
-
     void doWork(int id);
-
-    void clear();
 
     void tick();
 
     void pop();
 
-    int GetNextTick();
+    int get_next_tick();
 
 private:
-    void del_(size_t i);
+    void del(size_t i);
     
-    void siftup_(size_t i);
+    void siftup(size_t i);
 
-    bool siftdown_(size_t index, size_t n);
+    bool siftdown(size_t index, size_t n);
 
-    void SwapNode_(size_t i, size_t j);
+    void swap_node(size_t i, size_t j);
 
     std::vector<TimerNode> heap_;
 
-    std::unordered_map<int, size_t> ref_;
+    std::unordered_map<int, size_t> ref_; //fd与小根堆中id的对应
 };

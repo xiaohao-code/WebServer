@@ -1,48 +1,51 @@
+//实现自动增长的缓冲区，通过vector<char>实现
+
 #pragma once
 
 #include <cstring>   //perror
 #include <iostream>
-#include <unistd.h>  // write
+#include <unistd.h>  //write
 #include <sys/uio.h> //readv
-#include <vector> //readv
+#include <vector>    //readv
 #include <atomic>
 #include <assert.h>
+
+
 class Buffer {
 public:
-    Buffer(int initBuffSize = 1024);
+    Buffer(int init_buff_size = 1024);
     ~Buffer() = default;
 
-    size_t WritableBytes() const;       
-    size_t ReadableBytes() const ;
-    size_t PrependableBytes() const;
+    size_t readable_bytes() const;
+    size_t writable_bytes() const;       
 
-    const char* Peek() const;
-    void EnsureWriteable(size_t len);
-    void HasWritten(size_t len);
+    const char* peek() const; 
+    void ensure_writeable(size_t len);
+    void has_written(size_t len);
 
-    void Retrieve(size_t len);
-    void RetrieveUntil(const char* end);
+    void retrieve(size_t len);
+    void retrieve_until(const char* end);
+    void retrieve_all() ;
+    std::string retrieve_all_to_str();
 
-    void RetrieveAll() ;
-    std::string RetrieveAllToStr();
+    const char* begin_write_const() const;
+    char* begin_write();
 
-    const char* BeginWriteConst() const;
-    char* BeginWrite();
+    void append(const std::string& str);
+    void append(const char* str, size_t len);
+    void append(const void* data, size_t len);
+    void append(const Buffer& buff);
 
-    void Append(const std::string& str);
-    void Append(const char* str, size_t len);
-    void Append(const void* data, size_t len);
-    void Append(const Buffer& buff);
-
-    ssize_t ReadFd(int fd, int* Errno);
-    ssize_t WriteFd(int fd, int* Errno);
+    ssize_t read_fd(int fd, int* errno_flag);
+    ssize_t write_fd(int fd, int* errno_flag);
 
 private:
-    char* BeginPtr_();
-    const char* BeginPtr_() const;
-    void MakeSpace_(size_t len);
+    char* begin_ptr();
+    const char* begin_ptr() const;
+    size_t has_read_bytes() const;
+    void make_space(size_t len);
 
     std::vector<char> buffer_;
-    std::atomic<std::size_t> readPos_;
-    std::atomic<std::size_t> writePos_;
+    std::atomic<std::size_t> read_pos_;
+    std::atomic<std::size_t> write_pos_;
 };

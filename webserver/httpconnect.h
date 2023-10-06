@@ -1,3 +1,5 @@
+//HTTP客户端连接对应的对象
+
 #pragma once
 
 #include <sys/types.h>
@@ -18,48 +20,43 @@ public:
 
     ~HttpConnect();
 
-    void Init(int sockFd, const sockaddr_in& addr);
+    void init(int sockFd, const sockaddr_in& addr);
 
-    ssize_t Read(int* saveErrno);
+    ssize_t read_request(int* saveErrno);
 
-    ssize_t Write(int* saveErrno);
+    bool process();
 
-    void Close();
+    ssize_t write_response(int* saveErrno);
 
-    int GetFd() const;
+    void close_connect();
 
-    int GetPort() const;
+    int get_fd() const;
 
-    const char* GetIP() const;
+    int get_port() const;
+
+    const char* get_ip() const;
     
-    sockaddr_in GetAddr() const;
-    
-    bool Process();
+    sockaddr_in get_addr() const;
 
-//需要写入到socket的字节数
-    int ToWriteBytes() { 
-        return iov_[0].iov_len + iov_[1].iov_len; 
-    }
+    int to_write_bytes() const;
 
-    bool IsKeepAlive() const {
-        return request_.IsKeepAlive();
-    }
+    bool is_keep_alive() const;
 
-    static bool isET;
-    static const char* srcDir;
-    static std::atomic<int> userCount; //原子操作
+    static bool is_ET;
+    static const char* src_dir;
+    static std::atomic<int> user_count; //原子操作,类的静态变量
     
 private:
     int fd_;                      //对应socket的fd
     struct sockaddr_in addr_;     //对应客户端的地址
 
-    bool isClose_;
+    bool is_close_;
     
-    int iovCnt_;
+    int iov_count_;
     struct iovec iov_[2];
     
-    Buffer readBuff_;             //读缓冲区
-    Buffer writeBuff_;            //写缓冲区
+    Buffer read_buff_;             //读缓冲区
+    Buffer write_buff_;            //写缓冲区
 
     HttpRequest request_;
     HttpResponse response_;

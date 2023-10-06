@@ -3,75 +3,81 @@
 using namespace std;
 
 SqlConnPool::SqlConnPool() {
-    useCount_ = 0;
-    freeCount_ = 0;
+    use_counts_ = 0;
+    free_counts_ = 0;
 }
 
-SqlConnPool* SqlConnPool::Instance() {
-    static SqlConnPool connPool;
-    return &connPool;
+SqlConnPool::~SqlConnPool() {
+    close_pool();
 }
 
-void SqlConnPool::Init(const char* host, int port,
+//单例模式，实例化数据库连接池
+SqlConnPool* SqlConnPool::instance() {
+    static SqlConnPool conn_pool;
+    return &conn_pool;
+}
+
+//初始化连接池
+void SqlConnPool::init(const char* host, int port,
             const char* user,const char* pwd, const char* dbName,
-            int connSize = 10) {
-    assert(connSize > 0);
-    for (int i = 0; i < connSize; i++) {
+            int conn_size = 10) {
+    assert(conn_size > 0);
+    for (int i = 0; i < conn_size; i++) {
         MYSQL *sql = nullptr;
         sql = mysql_init(sql);
         if (!sql) {
             LOG_ERROR("MySql init error!");
             assert(sql);
         }
-        sql = mysql_real_connect(sql, host,
-                                 user, pwd,
-                                 dbName, port, nullptr, 0);
+        sql = mysql_real_connect(sql, host, user, pwd, dbName, port, nullptr, 0);
         if (!sql) {
             LOG_ERROR("MySql Connect error!");
         }
-        connQue_.push(sql);
+        connect_que_.push(sql);
     }
-    MAX_CONN_ = connSize;
-    sem_init(&semId_, 0, MAX_CONN_);
+    max_connects_ = conn_size;
+    sem_init(&sem_id_, 0, max_connects_);
 }
 
-MYSQL* SqlConnPool::GetConn() {
+//得到一个通向数据库地连接
+MYSQL* SqlConnPool::get_connect() {
     MYSQL *sql = nullptr;
-    if(connQue_.empty()){
+    if(connect_que_.empty()){
         LOG_WARN("SqlConnPool busy!");
         return nullptr;
     }
-    sem_wait(&semId_);
+    sem_wait(&sem_id_);
     {
         lock_guard<mutex> locker(mtx_);
-        sql = connQue_.front();
-        connQue_.pop();
+        sql = connect_que_.front();
+        connect_que_.pop();
     }
     return sql;
 }
 
-void SqlConnPool::FreeConn(MYSQL* sql) {
+//使用完的通向数据库的连接重新加入到队列中
+void SqlConnPool::free_connect(MYSQL* sql) {
     assert(sql);
     lock_guard<mutex> locker(mtx_);
-    connQue_.push(sql);
-    sem_post(&semId_);
+    connect_que_.push(sql);
+    sem_post(&sem_id_);
 }
 
-void SqlConnPool::ClosePool() {
+//关闭数据库
+void SqlConnPool::close_pool() {
     lock_guard<mutex> locker(mtx_);
-    while(!connQue_.empty()) {
-        auto item = connQue_.front();
-        connQue_.pop();
+    while(!connect_que_.empty()) {
+        auto item = connect_que_.front();
+        connect_que_.pop();
         mysql_close(item);
     }
     mysql_library_end();        
 }
 
-int SqlConnPool::GetFreeConnCount() {
+//获取目前可用的通向数据库的连接数量
+int SqlConnPool::get_free_connect_count() {
     lock_guard<mutex> locker(mtx_);
-    return connQue_.size();
+    return connect_que_.size();
 }
 
-SqlConnPool::~SqlConnPool() {
-    ClosePool();
-}
+

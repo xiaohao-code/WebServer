@@ -1,52 +1,57 @@
 [
 {
-  "directory": "/home/ubuntu/MyWebServer/build",
-  "command": "/usr/bin/g++   -I/home/ubuntu/MyWebServer/src/include  -g   -g -std=gnu++14 -o CMakeFiles/MyWebServer.dir/src/main.cpp.o -c /home/ubuntu/MyWebServer/src/main.cpp",
-  "file": "/home/ubuntu/MyWebServer/src/main.cpp"
+  "directory": "/home/ubuntu/WebServer/build",
+  "command": "/usr/bin/g++    -g   -g -std=gnu++14 -o CMakeFiles/WebServer.dir/webserver/buffer.cpp.o -c /home/ubuntu/WebServer/webserver/buffer.cpp",
+  "file": "/home/ubuntu/WebServer/webserver/buffer.cpp"
 },
 {
-  "directory": "/home/ubuntu/MyWebServer/build",
-  "command": "/usr/bin/g++   -I/home/ubuntu/MyWebServer/src/include  -g   -g -std=gnu++14 -o CMakeFiles/MyWebServer.dir/src/buffer.cpp.o -c /home/ubuntu/MyWebServer/src/buffer.cpp",
-  "file": "/home/ubuntu/MyWebServer/src/buffer.cpp"
+  "directory": "/home/ubuntu/WebServer/build",
+  "command": "/usr/bin/g++    -g   -g -std=gnu++14 -o CMakeFiles/WebServer.dir/webserver/epoller.cpp.o -c /home/ubuntu/WebServer/webserver/epoller.cpp",
+  "file": "/home/ubuntu/WebServer/webserver/epoller.cpp"
 },
 {
-  "directory": "/home/ubuntu/MyWebServer/build",
-  "command": "/usr/bin/g++   -I/home/ubuntu/MyWebServer/src/include  -g   -g -std=gnu++14 -o CMakeFiles/MyWebServer.dir/src/epoller.cpp.o -c /home/ubuntu/MyWebServer/src/epoller.cpp",
-  "file": "/home/ubuntu/MyWebServer/src/epoller.cpp"
+  "directory": "/home/ubuntu/WebServer/build",
+  "command": "/usr/bin/g++    -g   -g -std=gnu++14 -o CMakeFiles/WebServer.dir/webserver/heaptimer.cpp.o -c /home/ubuntu/WebServer/webserver/heaptimer.cpp",
+  "file": "/home/ubuntu/WebServer/webserver/heaptimer.cpp"
 },
 {
-  "directory": "/home/ubuntu/MyWebServer/build",
-  "command": "/usr/bin/g++   -I/home/ubuntu/MyWebServer/src/include  -g   -g -std=gnu++14 -o CMakeFiles/MyWebServer.dir/src/heaptimer.cpp.o -c /home/ubuntu/MyWebServer/src/heaptimer.cpp",
-  "file": "/home/ubuntu/MyWebServer/src/heaptimer.cpp"
+  "directory": "/home/ubuntu/WebServer/build",
+  "command": "/usr/bin/g++    -g   -g -std=gnu++14 -o CMakeFiles/WebServer.dir/webserver/httpconnect.cpp.o -c /home/ubuntu/WebServer/webserver/httpconnect.cpp",
+  "file": "/home/ubuntu/WebServer/webserver/httpconnect.cpp"
 },
 {
-  "directory": "/home/ubuntu/MyWebServer/build",
-  "command": "/usr/bin/g++   -I/home/ubuntu/MyWebServer/src/include  -g   -g -std=gnu++14 -o CMakeFiles/MyWebServer.dir/src/httpconnect.cpp.o -c /home/ubuntu/MyWebServer/src/httpconnect.cpp",
-  "file": "/home/ubuntu/MyWebServer/src/httpconnect.cpp"
+  "directory": "/home/ubuntu/WebServer/build",
+  "command": "/usr/bin/g++    -g   -g -std=gnu++14 -o CMakeFiles/WebServer.dir/webserver/httprequest.cpp.o -c /home/ubuntu/WebServer/webserver/httprequest.cpp",
+  "file": "/home/ubuntu/WebServer/webserver/httprequest.cpp"
 },
 {
-  "directory": "/home/ubuntu/MyWebServer/build",
-  "command": "/usr/bin/g++   -I/home/ubuntu/MyWebServer/src/include  -g   -g -std=gnu++14 -o CMakeFiles/MyWebServer.dir/src/httprequest.cpp.o -c /home/ubuntu/MyWebServer/src/httprequest.cpp",
-  "file": "/home/ubuntu/MyWebServer/src/httprequest.cpp"
+  "directory": "/home/ubuntu/WebServer/build",
+  "command": "/usr/bin/g++    -g   -g -std=gnu++14 -o CMakeFiles/WebServer.dir/webserver/httpresponse.cpp.o -c /home/ubuntu/WebServer/webserver/httpresponse.cpp",
+  "file": "/home/ubuntu/WebServer/webserver/httpresponse.cpp"
 },
 {
-  "directory": "/home/ubuntu/MyWebServer/build",
-  "command": "/usr/bin/g++   -I/home/ubuntu/MyWebServer/src/include  -g   -g -std=gnu++14 -o CMakeFiles/MyWebServer.dir/src/httpresponse.cpp.o -c /home/ubuntu/MyWebServer/src/httpresponse.cpp",
-  "file": "/home/ubuntu/MyWebServer/src/httpresponse.cpp"
+  "directory": "/home/ubuntu/WebServer/build",
+  "command": "/usr/bin/g++    -g   -g -std=gnu++14 -o CMakeFiles/WebServer.dir/webserver/log.cpp.o -c /home/ubuntu/WebServer/webserver/log.cpp",
+  "file": "/home/ubuntu/WebServer/webserver/log.cpp"
 },
 {
-  "directory": "/home/ubuntu/MyWebServer/build",
-  "command": "/usr/bin/g++   -I/home/ubuntu/MyWebServer/src/include  -g   -g -std=gnu++14 -o CMakeFiles/MyWebServer.dir/src/log.cpp.o -c /home/ubuntu/MyWebServer/src/log.cpp",
-  "file": "/home/ubuntu/MyWebServer/src/log.cpp"
+  "directory": "/home/ubuntu/WebServer/build",
+  "command": "/usr/bin/g++    -g   -g -std=gnu++14 -o CMakeFiles/WebServer.dir/webserver/main.cpp.o -c /home/ubuntu/WebServer/webserver/main.cpp",
+  "file": "/home/ubuntu/WebServer/webserver/main.cpp"
 },
 {
-  "directory": "/home/ubuntu/MyWebServer/build",
-  "command": "/usr/bin/g++   -I/home/ubuntu/MyWebServer/src/include  -g   -g -std=gnu++14 -o CMakeFiles/MyWebServer.dir/src/sqlconnpool.cpp.o -c /home/ubuntu/MyWebServer/src/sqlconnpool.cpp",
-  "file": "/home/ubuntu/MyWebServer/src/sqlconnpool.cpp"
+  "directory": "/home/ubuntu/WebServer/build",
+  "command": "/usr/bin/g++    -g   -g -std=gnu++14 -o CMakeFiles/WebServer.dir/webserver/serverconfig.cpp.o -c /home/ubuntu/WebServer/webserver/serverconfig.cpp",
+  "file": "/home/ubuntu/WebServer/webserver/serverconfig.cpp"
 },
 {
-  "directory": "/home/ubuntu/MyWebServer/build",
-  "command": "/usr/bin/g++   -I/home/ubuntu/MyWebServer/src/include  -g   -g -std=gnu++14 -o CMakeFiles/MyWebServer.dir/src/webserver.cpp.o -c /home/ubuntu/MyWebServer/src/webserver.cpp",
-  "file": "/home/ubuntu/MyWebServer/src/webserver.cpp"
+  "directory": "/home/ubuntu/WebServer/build",
+  "command": "/usr/bin/g++    -g   -g -std=gnu++14 -o CMakeFiles/WebServer.dir/webserver/sqlconnpool.cpp.o -c /home/ubuntu/WebServer/webserver/sqlconnpool.cpp",
+  "file": "/home/ubuntu/WebServer/webserver/sqlconnpool.cpp"
+},
+{
+  "directory": "/home/ubuntu/WebServer/build",
+  "command": "/usr/bin/g++    -g   -g -std=gnu++14 -o CMakeFiles/WebServer.dir/webserver/webserver.cpp.o -c /home/ubuntu/WebServer/webserver/webserver.cpp",
+  "file": "/home/ubuntu/WebServer/webserver/webserver.cpp"
 }
 ]

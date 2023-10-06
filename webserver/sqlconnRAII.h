@@ -7,13 +7,13 @@ class SqlConnRAII {
 public:
     SqlConnRAII(MYSQL** sql, SqlConnPool *connpool) {
         assert(connpool);
-        *sql = connpool->GetConn();
+        *sql = connpool->get_connect();
         sql_ = *sql;
         connpool_ = connpool;
     }
     
     ~SqlConnRAII() {
-        if(sql_) { connpool_->FreeConn(sql_); }
+        if(sql_) { connpool_->free_connect(sql_); }
     }
     
 private:

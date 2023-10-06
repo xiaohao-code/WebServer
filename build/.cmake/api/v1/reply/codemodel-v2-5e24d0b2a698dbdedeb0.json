@@ -26,7 +26,7 @@
 					[
 						0
 					],
-					"name" : "MyWebServer",
+					"name" : "WebServer",
 					"targetIndexes" : 
 					[
 						0
@@ -37,9 +37,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "MyWebServer::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-MyWebServer-Debug-9857759ccc876eaa99ec.json",
-					"name" : "MyWebServer",
+					"id" : "WebServer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-WebServer-Debug-db31590a0763004f0656.json",
+					"name" : "WebServer",
 					"projectIndex" : 0
 				}
 			]
@@ -48,8 +48,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/ubuntu/MyWebServer/build",
-		"source" : "/home/ubuntu/MyWebServer"
+		"build" : "/home/ubuntu/WebServer/build",
+		"source" : "/home/ubuntu/WebServer"
 	},
 	"version" : 
 	{

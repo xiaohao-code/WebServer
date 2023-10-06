@@ -7,24 +7,26 @@
 #include <functional>
 class ThreadPool {
 public:
-    explicit ThreadPool(size_t threadCount = 8): pool_(std::make_shared<Pool>()) {
-            assert(threadCount > 0);
-            for(size_t i = 0; i < threadCount; i++) {
-                std::thread([pool = pool_] {
-                    std::unique_lock<std::mutex> locker(pool->mtx);
-                    while(true) {
-                        if(!pool->tasks.empty()) {
-                            auto task = std::move(pool->tasks.front());
-                            pool->tasks.pop();
-                            locker.unlock();
-                            task();
-                            locker.lock();
-                        } 
-                        else if(pool->isClosed) break;
-                        else pool->cond.wait(locker);
+    explicit ThreadPool(size_t thread_count = 8) : pool_(std::make_shared<Pool>()) {
+        assert(thread_count > 0);
+        for(size_t i = 0; i < thread_count; i++) {
+            std::thread([pool = pool_] {
+                std::unique_lock<std::mutex> locker(pool->mtx);
+                while(true) {
+                    if(!pool->tasks.empty()) {
+                        auto task = std::move(pool->tasks.front());
+                        pool->tasks.pop();
+                        locker.unlock();
+                        task();
+                        locker.lock();
+                    } else if(pool->is_closed) {
+                        break;
+                    } else {
+                        pool->cond.wait(locker);
                     }
-                }).detach();
-            }
+                }
+            }).detach();
+        }
     }
 
     ThreadPool() = default;
@@ -35,14 +37,14 @@ public:
         if(static_cast<bool>(pool_)) {
             {
                 std::lock_guard<std::mutex> locker(pool_->mtx);
-                pool_->isClosed = true;
+                pool_->is_closed = true;
             }
             pool_->cond.notify_all();
         }
     }
 
     template<class F>
-    void AddTask(F&& task) {
+    void add_task(F&& task) {
         {
             std::lock_guard<std::mutex> locker(pool_->mtx);
             pool_->tasks.emplace(std::forward<F>(task));
@@ -54,7 +56,7 @@ private:
     struct Pool {
         std::mutex mtx;
         std::condition_variable cond;
-        bool isClosed;
+        bool is_closed;
         std::queue<std::function<void()>> tasks;
     };
     std::shared_ptr<Pool> pool_;
