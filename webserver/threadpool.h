@@ -5,6 +5,7 @@
 #include <queue>
 #include <thread>
 #include <functional>
+
 class ThreadPool {
 public:
     explicit ThreadPool(size_t thread_count = 8) : pool_(std::make_shared<Pool>()) {
@@ -19,7 +20,7 @@ public:
                         locker.unlock();
                         task();
                         locker.lock();
-                    } else if(pool->is_closed) {
+                    } else if (pool->is_closed) {
                         break;
                     } else {
                         pool->cond.wait(locker);
